@@ -1,12 +1,17 @@
+import './ContactInfo.css'
+
 const ContactInfo = ({ user }) => {
   return (
-    <>
-      <div>Address: {user.address.street} {user.address.suite}, {user.address.city}</div>
-      <div>Company: {user.company.name}</div>
-      <div>Email: {user.email}</div>
-      <div>Phone: {user.phone}</div>
-      <div>URL: {user.website}</div>
-    </>
+    <div className='contact-info'>
+      <h2>{user.company.name}</h2>
+      <div>{user.email}</div>
+      <div>{user.phone}</div>
+      <div>{user.website}</div>
+      <br />
+      <div>{user.address.street}</div>
+      <div>{user.address.suite}</div>
+      <div>{user.address.city} {user.address.zipcode}</div>
+    </div>
   )
 }
 

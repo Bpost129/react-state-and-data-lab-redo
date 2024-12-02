@@ -12,7 +12,6 @@ const UserCard = ({ user }) => {
 
   return ( 
     <div className='user-card'>
-
       {!show && <ProfileInfo user={user} />}
       {show && <ContactInfo user={user} />}
       <button onClick={handleShow}>Show {show ? 'Profile' : 'Contact'} Info </button>

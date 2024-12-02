@@ -1,10 +1,12 @@
+import './ProfileInfo.css'
+
 const ProfileInfo = ({ user }) => {
   return (
-    <>
+    <div className='profile-info'>
       <img src={user.avatar} alt="user avatar" />
-      <div>Name: {user.name}</div>
-      <div>Username: {user.username}</div>
-    </>
+      <h2>{user.name}</h2>
+      <h4>@{user.username}</h4>
+    </div>
   )
 }
 

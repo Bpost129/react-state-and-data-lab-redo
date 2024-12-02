@@ -10,9 +10,11 @@ const UserCard = ({ user }) => {
       <div>Username: {user.username}</div>
 
       {/* contact info */}
-      {/* <div>Address: {user.address}</div> */}
+      <div>Address: {user.address.street} {user.address.suite}, {user.address.city}</div>
       <div>Company: {user.company.name}</div>
-      <div>Contact: {user.phone}</div>
+      <div>Email: {user.email}</div>
+      <div>Phone: {user.phone}</div>
+      <div>URL: {user.website}</div>
     </div>
   )
 }

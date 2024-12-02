@@ -1,20 +1,21 @@
+import { useState } from 'react'
+import ProfileInfo from '../ProfileInfo/ProfileInfo'
+import ContactInfo from '../ContactInfo/ContactInfo'
 import './UserCard.css'
 
 const UserCard = ({ user }) => {
+  const [show, setShow] = useState(false)
+
+  const handleShow = () => {
+    setShow(!show)
+  }
 
   return ( 
     <div className='user-card'>
-      {/* profile info */}
-      <img src={user.avatar} alt="user avatar" />
-      <div>Name: {user.name}</div>
-      <div>Username: {user.username}</div>
 
-      {/* contact info */}
-      <div>Address: {user.address.street} {user.address.suite}, {user.address.city}</div>
-      <div>Company: {user.company.name}</div>
-      <div>Email: {user.email}</div>
-      <div>Phone: {user.phone}</div>
-      <div>URL: {user.website}</div>
+      {!show && <ProfileInfo user={user} />}
+      {show && <ContactInfo user={user} />}
+      <button onClick={handleShow}>Show {show ? 'Profile' : 'Contact'} Info </button>
     </div>
   )
 }

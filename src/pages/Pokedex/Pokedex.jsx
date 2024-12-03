@@ -6,19 +6,29 @@ console.log(pokeData)
 
 
 const Pokedex = () => {
-  const displayCount = 10
+  const displayCount = 50
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(pokeData)
+
+  const handlePageUp = () => {
+    if (currIdx + displayCount > pokeData.length) return
+    setCurrIdx(currIdx + displayCount)
+  }
+
+  const handlePageDown = () => {
+    if (currIdx - displayCount < 0) return
+    setCurrIdx(currIdx - displayCount)
+  }
 
   return ( 
     <>
       <h1>Pokemon List</h1>
       <div className="pagination-container">
-        <button>&lt;</button>
-        <button>&gt;</button>
+        <button onClick={handlePageDown}>&lt;</button>
+        <button onClick={handlePageUp}>&gt;</button>
       </div>
       <div className="num-results-container">
-        Results ## - ## of {pokeData.length}
+        Results {currIdx + 1} - {currIdx + displayCount <= pokeData.length ? currIdx + displayCount : currIdx + (pokeData.length - currIdx) } of {pokeData.length}
       </div>
       <div className="pokemon-container">
         {displayedPokemon.map(pokemon => 

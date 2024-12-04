@@ -6,19 +6,31 @@ console.log(pokeData)
 
 
 const Pokedex = () => {
-  const displayCount = 50
+  const displayCount = 10
   const [currIdx, setCurrIdx] = useState(0)
-  const [displayedPokemon, setDisplayedPokemon] = useState(pokeData)
+  const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemon(0))
+
+  function filterPokemon(newIdx) {
+    const filteredPokemon = pokeData.filter((pokemon, idx) => {
+      return idx >= newIdx && idx < newIdx + displayCount
+    })
+
+    return filteredPokemon
+  }
 
   const handlePageUp = () => {
     if (currIdx + displayCount > pokeData.length) return
     setCurrIdx(currIdx + displayCount)
+    setDisplayedPokemon(filterPokemon(currIdx + displayCount))
   }
-
+  
   const handlePageDown = () => {
     if (currIdx - displayCount < 0) return
     setCurrIdx(currIdx - displayCount)
+    setDisplayedPokemon(filterPokemon(currIdx - displayCount))
   }
+
+
 
   return ( 
     <>

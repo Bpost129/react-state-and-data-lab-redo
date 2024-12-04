@@ -6,7 +6,7 @@ console.log(pokeData)
 
 
 const Pokedex = () => {
-  const displayCount = 10
+  const displayCount = 20
   const [currIdx, setCurrIdx] = useState(0)
   const [displayedPokemon, setDisplayedPokemon] = useState(filterPokemon(0))
 
